@@ -13,6 +13,7 @@ Create a file `main.nf` containing a nix expression that evaluates to a set that
   resource.aws_instance.example = {
     ami           = "ami-0d729a60";
     instance_type = "t2.micro";
+  };
 };
 ```
 
