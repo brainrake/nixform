@@ -1,0 +1,2 @@
+#!/bin/sh
+nix-instantiate --strict --eval main.nf --json > main.tf.json && terraform $@
