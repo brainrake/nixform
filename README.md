@@ -38,7 +38,7 @@ Then use `nixform` instead of `terraform`.
 ```
 
 before running `terraform` with the given arguments, `main.nf` is evaluated strictly. The above example will produce a `main.tf.json` like this:
-```
+```json
 {
   "resource": {
     "aws_instance": {
