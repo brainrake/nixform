@@ -1,2 +1,6 @@
 #!/bin/sh
-nix-instantiate --strict --eval main.nf --json > main.tf.json && terraform $@
+set -e
+for i in *.tf.nix; do
+  nix-instantiate --strict --eval $i --json > `echo $i | sed s/\.tf\.nix$/.tf.json/`
+done
+terraform $@
