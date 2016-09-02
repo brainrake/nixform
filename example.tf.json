@@ -1,20 +1,20 @@
 {
    "resource" : {
       "aws_instance" : {
-         "two" : {
-            "instance_type" : "t2.micro",
-            "ami" : "ami-0d729a60",
-            "tags" : {
-               "name" : "two"
-            }
-         },
          "one" : {
             "tags" : {
-               "name" : "one",
-               "description" : "First!"
+               "name" : "one"
             },
             "ami" : "ami-0d729a60",
-            "instance_type" : "t2.micro"
+            "instance_type" : "t2.nano"
+         },
+         "two" : {
+            "tags" : {
+               "name" : "two",
+               "description" : "First!"
+            },
+            "instance_type" : "t2.micro",
+            "ami" : "ami-0d729a60"
          }
       }
    },

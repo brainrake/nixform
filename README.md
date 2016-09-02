@@ -23,16 +23,19 @@ Create a file [example.tf.nix](example.tf.nix) containing a nix expression that 
 ```nix
 let
   lib = (import <nixpkgs> {}).lib;
-  tpl = lib.mapAttrs (name: value: lib.recursiveUpdate {
+  tpls = lib.mapAttrs (name: value: lib.recursiveUpdate {
     tags.name = name;
     ami = "ami-0d729a60";
-    instance_type = "t2.micro";
+    instance_type = "t2.nano";
   } value);
 in {
   provider.aws.region = "us-east-1";
-  resource.aws_instance = tpl {
-    one.tags.description = "First!";
-    two.instance_type = "t2.micro";
+  resource.aws_instance = tpls {
+    one = {};
+    two = {
+      tags.description = "First!";
+      instance_type = "t2.micro";
+    };
   };
 }
 ```
@@ -51,20 +54,20 @@ Before running `terraform` with the given arguments, `*.tf.nix` is evaluated str
 {
    "resource" : {
       "aws_instance" : {
-         "two" : {
-            "instance_type" : "t2.micro",
-            "ami" : "ami-0d729a60",
-            "tags" : {
-               "name" : "two"
-            }
-         },
          "one" : {
             "tags" : {
-               "name" : "one",
-               "description" : "First!"
+               "name" : "one"
             },
             "ami" : "ami-0d729a60",
-            "instance_type" : "t2.micro"
+            "instance_type" : "t2.nano"
+         },
+         "two" : {
+            "tags" : {
+               "name" : "two",
+               "description" : "First!"
+            },
+            "instance_type" : "t2.micro",
+            "ami" : "ami-0d729a60"
          }
       }
    },
