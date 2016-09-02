@@ -21,16 +21,19 @@ nix-shell
 Create a file [example.tf.nix](example.tf.nix) containing a nix expression that evaluates to a set that looks like terraform's json format.
 
 ```nix
-{
+let
+  lib = (import <nixpkgs> {}).lib;
+  tpl = lib.mapAttrs (name: value: lib.recursiveUpdate {
+    tags.name = name;
+    ami = "ami-0d729a60";
+    instance_type = "t2.micro";
+  } value);
+in {
   provider.aws.region = "us-east-1";
-  resource.aws_instance = builtins.listToAttrs (map (name : {
-    name = name;
-    value = {
-      ami = "ami-0d729a60";
-      instance_type = "t2.micro";
-      tags.name = name;
-    };
-  }) ["one" "two"]);
+  resource.aws_instance = tpl {
+    one.tags.description = "First!";
+    two.instance_type = "t2.micro";
+  };
 }
 ```
 
@@ -46,11 +49,6 @@ Then use `nixform` instead of `terraform`.
 Before running `terraform` with the given arguments, `*.tf.nix` is evaluated strictly and output in terraform json format. The above example will produce an [example.tf.json](example.tf.json) like this:
 ```json
 {
-   "provider" : {
-      "aws" : {
-         "region" : "us-east-1"
-      }
-   },
    "resource" : {
       "aws_instance" : {
          "two" : {
@@ -61,12 +59,18 @@ Before running `terraform` with the given arguments, `*.tf.nix` is evaluated str
             }
          },
          "one" : {
-            "ami" : "ami-0d729a60",
-            "instance_type" : "t2.micro",
             "tags" : {
-               "name" : "one"
-            }
+               "name" : "one",
+               "description" : "First!"
+            },
+            "ami" : "ami-0d729a60",
+            "instance_type" : "t2.micro"
          }
+      }
+   },
+   "provider" : {
+      "aws" : {
+         "region" : "us-east-1"
       }
    }
 }

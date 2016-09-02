@@ -1,9 +1,4 @@
 {
-   "provider" : {
-      "aws" : {
-         "region" : "us-east-1"
-      }
-   },
    "resource" : {
       "aws_instance" : {
          "two" : {
@@ -14,12 +9,18 @@
             }
          },
          "one" : {
-            "ami" : "ami-0d729a60",
-            "instance_type" : "t2.micro",
             "tags" : {
-               "name" : "one"
-            }
+               "name" : "one",
+               "description" : "First!"
+            },
+            "ami" : "ami-0d729a60",
+            "instance_type" : "t2.micro"
          }
+      }
+   },
+   "provider" : {
+      "aws" : {
+         "region" : "us-east-1"
       }
    }
 }
