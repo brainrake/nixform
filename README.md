@@ -18,7 +18,7 @@ nix-shell
 
 ## Usage
 
-Create a file [`example.tf.nix`](example.tf.nix) containing a nix expression that evaluates to a set that looks like terraform's json format.
+Create a file [example.tf.nix](example.tf.nix) containing a nix expression that evaluates to a set that looks like terraform's json format.
 
 ```nix
 {
@@ -43,7 +43,7 @@ Then use `nixform` instead of `terraform`.
 
 ## How?
 
-Before running `terraform` with the given arguments, `*.tf.nix` is evaluated strictly and output in terraform json format. The above example will produce an (`example.tf.json`)[example.tf.json] like this:
+Before running `terraform` with the given arguments, `*.tf.nix` is evaluated strictly and output in terraform json format. The above example will produce an [example.tf.json](example.tf.json) like this:
 ```json
 {
    "provider" : {
