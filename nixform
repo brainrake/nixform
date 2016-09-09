@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 for i in *.tf.nix; do
-  nix-instantiate --strict --eval $i --json | json_pp > `echo $i | sed s/\.tf\.nix$/.tf.json/`
+  nix-instantiate --strict --eval $i --json | json_reformat > `echo $i | sed s/\.tf\.nix$/.tf.json/`
 done
 terraform $@

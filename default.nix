@@ -4,11 +4,11 @@ in rec {
   nixform = pkgs.stdenv.mkDerivation rec {
     name = "nixform";
     version = "0.1.0";
-    buildInputs = [ pkgs.makeWrapper pkgs.terraform pkgs.yajl ];
+    buildInputs = [ pkgs.makeWrapper pkgs.terraform pkgs.yajl pkgs.gnused ];
     installPhase = ''
       mkdir -p $out/bin
       cp nixform $out/bin
-      wrapProgram $out/bin/nixform --suffix PATH : ${pkgs.terraform}/bin:${pkgs.yajl}/bin
+      wrapProgram $out/bin/nixform --suffix PATH :${pkgs.terraform}/bin:${pkgs.yajl}/bin:${pkgs.gnused}/bin
     '';
     src = ./.;
   };
