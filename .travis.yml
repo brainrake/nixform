@@ -1,3 +1,4 @@
 language: nix
 script: nix-env -i -f . && nixform validate
-notifications: email: false
+notifications:
+  email: false
