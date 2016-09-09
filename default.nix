@@ -8,7 +8,7 @@ in rec {
     installPhase = ''
       mkdir -p $out/bin
       cp nixform $out/bin
-      wrapProgram $out/bin/nixform --suffix PATH :${pkgs.terraform}/bin:${pkgs.yajl}/bin:${pkgs.gnused}/bin
+      wrapProgram $out/bin/nixform --suffix PATH : ${pkgs.terraform}/bin:${pkgs.yajl}/bin:${pkgs.gnused}/bin
     '';
     src = ./.;
   };
