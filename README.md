@@ -51,29 +51,29 @@ nixform apply
 Before running `terraform` with the given arguments, `*.tf.nix` is evaluated strictly and output in terraform json format. The above example will produce an [example.tf.json](example.tf.json) like this:
 ```json
 {
-   "provider" : {
-      "aws" : {
-         "region" : "us-east-1"
-      }
-   },
-   "resource" : {
-      "aws_instance" : {
-         "one" : {
-            "instance_type" : "t2.nano",
-            "tags" : {
-               "name" : "one"
+    "provider": {
+        "aws": {
+            "region": "us-east-1"
+        }
+    },
+    "resource": {
+        "aws_instance": {
+            "one": {
+                "ami": "ami-0d729a60",
+                "instance_type": "t2.nano",
+                "tags": {
+                    "name": "one"
+                }
             },
-            "ami" : "ami-0d729a60"
-         },
-         "two" : {
-            "ami" : "ami-0d729a60",
-            "instance_type" : "t2.micro",
-            "tags" : {
-               "name" : "two",
-               "description" : "First!"
+            "two": {
+                "ami": "ami-0d729a60",
+                "instance_type": "t2.micro",
+                "tags": {
+                    "description": "Second!",
+                    "name": "two"
+                }
             }
-         }
-      }
-   }
+        }
+    }
 }
 ```

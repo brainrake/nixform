@@ -10,7 +10,7 @@ in {
   resource.aws_instance = tpls {
     one = {};
     two = {
-      tags.description = "First!";
+      tags.description = "Second!";
       instance_type = "t2.micro";
     };
   };
