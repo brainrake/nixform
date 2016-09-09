@@ -17,7 +17,7 @@ nix-env -i -f "https://github.com/brainrape/nixform/archive/master.tar.gz"
 
 ## Usage
 
-Create a file [example.tf.nix](example.tf.nix) containing a nix expression that evaluates to a set that looks like terraform's json format.
+Create a file like [example.tf.nix](example.tf.nix) containing a nix expression that evaluates to a set that looks like terraform's json format:
 
 ```nix
 let
@@ -32,7 +32,7 @@ in {
   resource.aws_instance = tpls {
     one = {};
     two = {
-      tags.description = "First!";
+      tags.description = "Second!";
       instance_type = "t2.micro";
     };
   };
