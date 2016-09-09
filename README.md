@@ -1,4 +1,7 @@
+[![Build Status](https://travis-ci.org/brainrape/nixform.svg?branch=master)](https://travis-ci.org/brainrape/nixform)
+
 # nixform
+
 define terraform infrastructure in Nix
 
 Terraform by Hashicorp is a great tool with a meh language. Fixed.
