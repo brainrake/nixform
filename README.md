@@ -39,7 +39,7 @@ in {
 Then use `nixform` instead of `terraform`.
 
 ```
-./nixform apply
+nixform apply
 ```
 
 
