@@ -9,7 +9,6 @@ First, [install nix](https://nixos.org/nix/download.html). Then,
 
 ```
 # install nixform (and deps)
-```
 nix-env -i -f "https://github.com/brainrape/nixform/archive/master.tar.gz"
 ```
 
