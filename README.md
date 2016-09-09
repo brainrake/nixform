@@ -8,12 +8,9 @@ Terraform by Hashicorp is a great tool with a meh language. Fixed.
 First, [install nix](https://nixos.org/nix/download.html). Then,
 
 ```
-# clone the repo
-git clone https://github.com/brainrape/nixform.git
-cd nixform
-
-# start a shell in an env with all tools and dependencies installed
-nix-shell
+# install nixform (and deps)
+```
+nix-env -i -f "https://github.com/brainrape/nixform/archive/master.tar.gz"
 ```
 
 ## Usage
