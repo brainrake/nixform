@@ -1,0 +1,2 @@
+language: nix
+script: nix-env -i -f . && nixform validate
