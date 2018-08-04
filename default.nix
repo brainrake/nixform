@@ -1,15 +1,22 @@
+{ stdenv, lib, makeWrapper, terraform, yajl, gnused }:
+
 let
-  pkgs = import <nixpkgs> {};
-in rec {
-  nixform = pkgs.stdenv.mkDerivation rec {
+  inherit (lib) sourceByRegex;
+in
+
+rec {
+  nixform = stdenv.mkDerivation rec {
     name = "nixform";
     version = "0.1.0";
-    buildInputs = [ pkgs.makeWrapper pkgs.terraform pkgs.yajl pkgs.gnused ];
+    buildInputs = [ makeWrapper terraform yajl gnused ];
     installPhase = ''
       mkdir -p $out/bin
       cp nixform $out/bin
-      wrapProgram $out/bin/nixform --suffix PATH : ${pkgs.terraform}/bin:${pkgs.yajl}/bin:${pkgs.gnused}/bin
+      wrapProgram $out/bin/nixform --suffix PATH : ${terraform}/bin:${yajl}/bin:${gnused}/bin
     '';
-    src = ./.;
+
+    src = sourceByRegex ./. [
+      "^nixform$"
+    ];
   };
 }
