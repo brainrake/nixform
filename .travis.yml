@@ -1,4 +1,4 @@
 language: nix
-script: nix-env -i -f . && nixform validate
+script: nix-env -i -f ./release.nix && nixform init && nixform validate
 notifications:
   email: false
